@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="WaterServe read-only meter inquiry and incident reporting portal for CCWD customers.">
+    <title>WaterServe | CCWD Customer Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="auth-overlay" id="authOverlay">
+        <div class="auth-panel" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+            <div class="auth-brand"><span class="brand-mark"><i class="fa-solid fa-droplet"></i></span> WaterServe</div>
+            <div class="auth-heading">
+                <p class="eyebrow">CCWD customer portal</p>
+                <h1 id="authTitle">Good water, clearly accounted for.</h1>
+                <p>Access your synchronized meter records and keep CCWD informed when service needs attention.</p>
+            </div>
+            <div class="auth-tabs" role="tablist">
+                <button class="auth-tab active" data-auth-tab="login" role="tab" aria-selected="true">Sign in</button>
+                <button class="auth-tab" data-auth-tab="signup" role="tab" aria-selected="false">Create account</button>
+            </div>
+            <form id="loginForm" class="auth-form" novalidate>
+                <label for="loginAccount">CCWD account number</label>
+                <div class="input-icon"><i class="fa-regular fa-id-card"></i><input id="loginAccount" inputmode="numeric" autocomplete="username" placeholder="12-3456-789" required></div>
+                <label for="loginPassword">Password</label>
+                <div class="input-icon"><i class="fa-solid fa-lock"></i><input id="loginPassword" type="password" autocomplete="current-password" placeholder="Enter your password" required></div>
+                <p class="form-feedback" id="loginFeedback" role="alert"></p>
+                <button class="primary-button full-width" type="submit">Continue to portal <i class="fa-solid fa-arrow-right"></i></button>
+                <p class="demo-hint"><i class="fa-solid fa-circle-info"></i> Demo account: <strong>12-3456-789</strong> with any password</p>
+            </form>
+            <form id="signupForm" class="auth-form hidden" novalidate>
+                <label for="signupName">Full name</label>
+                <div class="input-icon"><i class="fa-regular fa-user"></i><input id="signupName" autocomplete="name" placeholder="Juan Dela Cruz" required></div>
+                <label for="signupAccount">CCWD account number</label>
+                <div class="input-icon"><i class="fa-regular fa-id-card"></i><input id="signupAccount" inputmode="numeric" placeholder="12-3456-789" required></div>
+                <p class="form-feedback" id="signupFeedback" role="alert"></p>
+                <button class="primary-button full-width" type="submit">Verify account <i class="fa-solid fa-arrow-right"></i></button>
+            </form>
+            <p class="auth-legal">By continuing, you agree to use WaterServe for account inquiry and service reporting only.</p>
+        </div>
+        <div class="auth-aside"><span class="aside-kicker">Calbayog City Water District</span><span class="aside-number">01</span><p>One clear place to understand your water service.</p><span class="aside-line"></span></div>
+    </div>
+
+    <div class="app-shell hidden" id="appShell">
+        <aside class="sidebar">
+            <a class="brand" href="#overview"><span class="brand-mark"><i class="fa-solid fa-droplet"></i></span><span>WaterServe<small>CCWD CUSTOMER PORTAL</small></span></a>
+            <div class="sidebar-label">Workspace</div>
+            <nav class="side-nav" aria-label="Main navigation">
+                <button class="nav-item active" data-view="overview"><i class="fa-solid fa-grid-2"></i><span>Overview</span></button>
+                <button class="nav-item" data-view="history"><i class="fa-solid fa-chart-line"></i><span>Meter & billing history</span></button>
+                <button class="nav-item" data-view="report"><i class="fa-solid fa-file-circle-plus"></i><span>Report a problem</span></button>
+            </nav>
+            <div class="sidebar-foot"><div class="help-block"><i class="fa-solid fa-headset"></i><div><strong>Need assistance?</strong><span>CCWD support desk</span></div></div><p>WaterServe v1.0 · Read-only access</p></div>
+        </aside>
+        <main class="main-content">
+            <header class="topbar"><button class="mobile-menu" id="mobileMenu" aria-label="Open navigation"><i class="fa-solid fa-bars"></i></button><div class="breadcrumb"><span>WaterServe</span><i class="fa-solid fa-chevron-right"></i><strong id="pageTitle">Overview</strong></div><div class="account-menu"><span class="sync-dot"></span><span class="synced-label">Synced just now</span><button class="account-button" id="accountButton"><span class="avatar">JD</span><span><strong>Juan Dela Cruz</strong><small>12-3456-789</small></span><i class="fa-solid fa-chevron-down"></i></button><button class="logout-button" id="logoutButton" aria-label="Sign out"><i class="fa-solid fa-arrow-right-from-bracket"></i></button></div></header>
+            <div class="page-wrap">
+                <section class="view active" id="overviewView">
+                    <div class="welcome-row"><div><p class="eyebrow">Monday, September 18, 2026</p><h1>Good morning, Juan.</h1><p class="intro">Here is the latest view of your CCWD service account.</p></div><span class="status-pill"><i class="fa-solid fa-circle-check"></i> Account active</span></div>
+                    <div class="notice"><i class="fa-solid fa-arrows-rotate"></i><div><strong>Read-only synchronized record</strong><p>Your account data is synced from the CCWD master database. WaterServe does not process payments or create transactions.</p></div><span class="notice-time">Updated 09:42 AM</span></div>
+                    <div class="metric-grid"><article class="metric-card"><div class="metric-top"><span>Latest reading</span><i class="fa-solid fa-gauge-high"></i></div><strong>142 <small>m³</small></strong><p><i class="fa-solid fa-arrow-trend-up"></i> 8 m³ from last month</p></article><article class="metric-card balance"><div class="metric-top"><span>Statement balance</span><i class="fa-solid fa-receipt"></i></div><strong>₱450<small>.00</small></strong><p>Due October 15, 2026</p></article><article class="metric-card reports"><div class="metric-top"><span>Active reports</span><i class="fa-solid fa-flag"></i></div><strong>1</strong><p><span class="badge amber">In review</span> WS-284619</p></article></div>
+                    <div class="content-grid"><article class="surface recent-reading"><div class="section-heading"><div><p class="eyebrow">Service snapshot</p><h2>Current meter reading</h2></div><button class="text-button" data-view-link="history">View history <i class="fa-solid fa-arrow-up-right-from-square"></i></button></div><div class="reading-visual"><div class="meter-ring"><span>142</span><small>m³</small></div><div><span class="muted-label">Reading date</span><strong>September 1, 2026</strong><span class="muted-label">Consumption this cycle</span><strong>18 m³ <em class="positive">+6.0%</em></strong></div></div><div class="meter-bar"><span style="width: 62%"></span></div><div class="meter-scale"><span>0 m³</span><span>Monthly average: 22 m³</span><span>35 m³</span></div></article><article class="surface account-card"><div class="section-heading"><div><p class="eyebrow">Service account</p><h2>Account details</h2></div><i class="fa-regular fa-circle-check verified-icon"></i></div><dl><div><dt>Account holder</dt><dd>Juan Dela Cruz</dd></div><div><dt>Service address</dt><dd>Brgy. Hamorawon, Calbayog City</dd></div><div><dt>Connection status</dt><dd><span class="badge green">Active</span></dd></div></dl></article></div>
+                </section>
+                <section class="view" id="historyView"><div class="view-heading"><div><p class="eyebrow">Read-only records</p><h1>Meter & billing history</h1><p class="intro">Review your synchronized consumption and statement records.</p></div><span class="export-note"><i class="fa-solid fa-lock"></i> Editing disabled</span></div><div class="surface table-surface"><div class="table-toolbar"><div><h2>Past records</h2><p>Latest records from the CCWD master database</p></div><span class="badge blue"><i class="fa-solid fa-arrows-rotate"></i> Synced September 18, 2026</span></div><div class="table-wrap"><table><thead><tr><th>Billing period</th><th>Reading date</th><th>Meter reading</th><th>Consumption</th><th>Statement balance</th><th>Status</th></tr></thead><tbody><tr><td><strong>September 2026</strong></td><td>Sep 01, 2026</td><td>142 m³</td><td>18 m³</td><td>₱450.00</td><td><span class="badge amber">Due</span></td></tr><tr><td><strong>August 2026</strong></td><td>Aug 01, 2026</td><td>124 m³</td><td>20 m³</td><td>₱512.00</td><td><span class="badge green">Settled</span></td></tr><tr><td><strong>July 2026</strong></td><td>Jul 01, 2026</td><td>104 m³</td><td>19 m³</td><td>₱486.00</td><td><span class="badge green">Settled</span></td></tr><tr><td><strong>June 2026</strong></td><td>Jun 01, 2026</td><td>85 m³</td><td>17 m³</td><td>₱432.00</td><td><span class="badge green">Settled</span></td></tr></tbody></table></div><p class="table-footnote"><i class="fa-solid fa-circle-info"></i> Records are for inquiry only. For payment arrangements, contact an official CCWD collection office.</p></div></section>
+                <section class="view" id="reportView"><div class="view-heading"><div><p class="eyebrow">Service support</p><h1>Report a problem</h1><p class="intro">Tell CCWD what is happening and we will route it to the right team.</p></div></div><div class="report-layout"><article class="surface form-surface"><div class="section-heading"><div><h2>Incident details</h2><p>Fields marked with * are required.</p></div><span class="step-count">01 <i class="fa-solid fa-minus"></i> 02</span></div><form id="incidentForm"><div class="form-grid"><div class="field"><label for="issueType">Issue category *</label><select id="issueType" required><option value="">Select an issue...</option><option>Pipe leak</option><option>Low water pressure</option><option>Dirty or discolored water</option><option>No water supply</option><option>Other service concern</option></select></div><div class="field"><label for="incidentLocation">Location *</label><input id="incidentLocation" required placeholder="Street, barangay, or landmark"></div></div><div class="field"><label for="description">Describe the problem *</label><textarea id="description" rows="5" required placeholder="Include when it started and any details that can help our team."></textarea><span class="field-hint">Be specific about the location and severity.</span></div><div class="field"><label for="photo">Photo evidence <span class="optional">Optional</span></label><label class="upload-box" for="photo"><i class="fa-solid fa-cloud-arrow-up"></i><span><strong>Choose a photo</strong> or drag it here</span><small>JPG, PNG up to 10 MB</small><input type="file" id="photo" accept="image/*"></label><span class="file-name" id="fileName"></span></div><button class="primary-button" type="submit">Submit incident report <i class="fa-solid fa-arrow-right"></i></button><p class="form-feedback" id="incidentFeedback" role="alert"></p></form><div class="report-success hidden" id="incidentResult"><span class="success-icon"><i class="fa-solid fa-check"></i></span><p class="eyebrow">Report received</p><h2>Thanks for letting us know.</h2><p>Your incident has been queued for CCWD staff review.</p><div class="tracking-code"><span>Tracking code</span><strong id="trackCode">WS-000000</strong><button type="button" id="copyCode" aria-label="Copy tracking code"><i class="fa-regular fa-copy"></i></button></div><button class="text-button" id="newReport" type="button">Submit another report <i class="fa-solid fa-arrow-right"></i></button></div></article><aside class="report-aside"><div class="report-art"><i class="fa-solid fa-headset"></i></div><h2>What happens next?</h2><ol><li><span>1</span><div><strong>We review your report</strong><p>CCWD staff checks the details and photo evidence.</p></div></li><li><span>2</span><div><strong>A team is assigned</strong><p>The concern is routed to the appropriate service team.</p></div></li><li><span>3</span><div><strong>You can track progress</strong><p>Keep your tracking code for follow-ups.</p></div></li></ol></aside></div></section>
+            </div>
+        </main>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
